@@ -29,7 +29,6 @@ func on_Join_Lobby_pressed():
 	$menu_screen/Create_Lobby.set_disabled(true)
 	$menu_screen/Join_Lobby.set_disabled(true)
 	
-	
 func _on_Close_pressed():
 	$Waiting.hide()
 

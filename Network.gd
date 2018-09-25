@@ -3,11 +3,11 @@ extends Node
 const SERVER_PORT = 3297
 const SERVER_IP = "127.0.0.1"
 const MAX_PLAYERS = 2
-var player_info = {name = "", role = ""}
+var player_info = {id = "", name = "", role = ""}
+var host_info = {id = "", name = "", role = ""}
 var amount_connected = 0
-
-func _process(delta):
-	print(amount_connected)
+onready var is_host = false
+onready var x = randi()%1
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "player_connected")
@@ -21,6 +21,13 @@ func create_server():
 	host.create_server(SERVER_PORT, MAX_PLAYERS)
 	get_tree().set_network_peer(host)
 	amount_connected += 1
+	host_info.id = host.get_unique_id()
+	is_host = true
+	
+	if x == 0:
+		host_info.role = "Yetzira"
+	else:
+		host_info.role = "Heres"
 
 func connect_to_server():
 	var peer = NetworkedMultiplayerENet.new()
@@ -28,16 +35,17 @@ func connect_to_server():
 	get_tree().set_network_peer(peer)
 
 func player_connected(id):
-	player_info.name = id
+	player_info.id = id
+	
 	if is_network_master():
 		amount_connected += 1
 	else: 
 		amount_connected += 2
-	var x = rand()%0+1
+	
 	if x == 0:
-		player_info.role = "Yetzira"
-	else:
 		player_info.role = "Heres"
+	else:
+		player_info.role = "Yetzira"
 	
 func player_disconnected(id):
     player_info.erase(id)
@@ -58,4 +66,3 @@ remote func register_player(id, info):
 	    rpc_id(id, "register_player", 1, player_info)
 	    for peer_id in player_info:
 	        rpc_id(id, "register_player", peer_id, player_info[peer_id])
-
