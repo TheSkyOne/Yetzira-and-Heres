@@ -6,7 +6,6 @@ var SERVER_IP = ""
 var player_info = {id = "", role = ""}
 var host_info = {id = "", role = ""}
 var amount_connected = 0
-var there_is_server = false
 onready var is_host = false
 onready var x = randi()%1
 
@@ -24,7 +23,6 @@ func create_server():
 	amount_connected += 1
 	host_info.id = host.get_unique_id()
 	is_host = true
-	there_is_server = true
 	
 	if x == 0:
 		host_info.role = "Yetzira"

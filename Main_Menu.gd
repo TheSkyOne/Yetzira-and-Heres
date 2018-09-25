@@ -1,6 +1,5 @@
 extends Node
 
-
 func _process(delta):	
 	if Network.amount_connected == Network.MAX_PLAYERS:
 		get_tree().set_refuse_new_network_connections(true)
@@ -21,7 +20,7 @@ func on_Create_Lobby_pressed():
 	$menu_screen/Join_Lobby.set_disabled(true)
 
 func on_Join_Lobby_pressed():
-	if Network.there_is_server:
+	if Network.SERVER_IP != "" and Network.SERVER_PORT != 0:
 		Network.connect_to_server()
 		$Waiting.show()
 		$menu_screen/Create_Lobby.set_disabled(true)
