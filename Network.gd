@@ -1,11 +1,12 @@
 extends Node
 
-const SERVER_PORT = 3297
-const SERVER_IP = "127.0.0.1"
 const MAX_PLAYERS = 2
-var player_info = {id = "", name = "", role = ""}
-var host_info = {id = "", name = "", role = ""}
+var SERVER_PORT = 0
+var SERVER_IP = ""
+var player_info = {id = "", role = ""}
+var host_info = {id = "", role = ""}
 var amount_connected = 0
+var there_is_server = false
 onready var is_host = false
 onready var x = randi()%1
 
@@ -23,6 +24,7 @@ func create_server():
 	amount_connected += 1
 	host_info.id = host.get_unique_id()
 	is_host = true
+	there_is_server = true
 	
 	if x == 0:
 		host_info.role = "Yetzira"
@@ -30,9 +32,9 @@ func create_server():
 		host_info.role = "Heres"
 
 func connect_to_server():
-	var peer = NetworkedMultiplayerENet.new()
-	peer.create_client(SERVER_IP, SERVER_PORT)
-	get_tree().set_network_peer(peer)
+		var peer = NetworkedMultiplayerENet.new()
+		peer.create_client(SERVER_IP, SERVER_PORT)
+		get_tree().set_network_peer(peer)
 
 func player_connected(id):
 	player_info.id = id

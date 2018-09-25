@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Main_Menu.gd" type="Script" id=1]
 [ext_resource path="res://jsl-ancient/JANCIENT.TTF" type="DynamicFontData" id=2]
@@ -56,6 +56,22 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 30
 use_mipmaps = true
 use_filter = true
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=9]
+
+size = 40
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=10]
+
+size = 50
+use_mipmaps = true
+use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
@@ -125,43 +141,16 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "Margin", "Rect", "Theme" ]
 
-[node name="Enter Name" type="LineEdit" parent="menu_screen" index="1"]
+[node name="Server_IP" type="LineEdit" parent="menu_screen" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 312.0
-margin_top = 200.0
-margin_right = 712.0
-margin_bottom = 250.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 1
-size_flags_horizontal = 1
-size_flags_vertical = 1
-theme = SubResource( 4 )
-text = "Your Name"
-focus_mode = 2
-context_menu_enabled = true
-placeholder_alpha = 0.6
-caret_blink = false
-caret_blink_speed = 0.65
-caret_position = 0
-_sections_unfolded = [ "Margin", "Theme" ]
-
-[node name="Server_IP" type="LineEdit" parent="menu_screen" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 64.0
-margin_top = 276.0
-margin_right = 464.0
-margin_bottom = 326.0
+margin_left = 310.0
+margin_top = 253.0
+margin_right = 710.0
+margin_bottom = 303.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -179,16 +168,16 @@ caret_blink_speed = 0.65
 caret_position = 0
 _sections_unfolded = [ "Margin", "Theme" ]
 
-[node name="Port" type="LineEdit" parent="menu_screen" index="3"]
+[node name="Port" type="LineEdit" parent="menu_screen" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 535.0
-margin_top = 275.0
-margin_right = 935.0
-margin_bottom = 325.0
+margin_left = 312.0
+margin_top = 166.0
+margin_right = 712.0
+margin_bottom = 216.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -206,7 +195,7 @@ caret_blink_speed = 0.65
 caret_position = 0
 _sections_unfolded = [ "Margin", "Theme" ]
 
-[node name="Create_Lobby" type="Button" parent="menu_screen" index="4"]
+[node name="Create_Lobby" type="Button" parent="menu_screen" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -233,7 +222,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Margin", "Rect", "Theme", "custom_fonts" ]
 
-[node name="Join_Lobby" type="Button" parent="menu_screen" index="5"]
+[node name="Join_Lobby" type="Button" parent="menu_screen" index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -329,12 +318,84 @@ flat = false
 align = 1
 _sections_unfolded = [ "custom_fonts" ]
 
-[connection signal="text_changed" from="menu_screen/Enter Name" to="." method="_on_Enter_Name_text_changed"]
+[node name="no_server_err" type="Panel" parent="." index="3"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 142.0
+margin_top = 139.0
+margin_right = 879.0
+margin_bottom = 463.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Error" type="Label" parent="no_server_err" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 38.0
+margin_top = 40.0
+margin_right = 778.0
+margin_bottom = 111.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 9 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Close" type="Button" parent="no_server_err" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 245.0
+margin_top = 220.0
+margin_right = 493.0
+margin_bottom = 295.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 10 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Close"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_fonts" ]
+
+[connection signal="text_changed" from="menu_screen/Server_IP" to="." method="_on_Server_IP_text_changed"]
+
+[connection signal="text_changed" from="menu_screen/Port" to="." method="_on_Port_text_changed"]
 
 [connection signal="pressed" from="menu_screen/Create_Lobby" to="." method="on_Create_Lobby_pressed"]
 
 [connection signal="pressed" from="menu_screen/Join_Lobby" to="." method="on_Join_Lobby_pressed"]
 
-[connection signal="pressed" from="Waiting/Close" to="." method="_on_Close_pressed"]
+[connection signal="pressed" from="Waiting/Close" to="." method="_on_Waiting_Close_pressed"]
+
+[connection signal="pressed" from="no_server_err/Close" to="." method="_on_Error_Close_pressed"]
 
 
