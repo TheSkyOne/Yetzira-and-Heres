@@ -7,7 +7,6 @@ var player_info = {id = "", role = ""}
 var host_info = {id = "", role = ""}
 var amount_connected = 0
 onready var is_host = false
-onready var x = randi()%1
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "player_connected")
@@ -24,15 +23,12 @@ func create_server():
 	host_info.id = host.get_unique_id()
 	is_host = true
 	
-	if x == 0:
-		host_info.role = "Yetzira"
-	else:
-		host_info.role = "Heres"
+
 
 func connect_to_server():
-		var peer = NetworkedMultiplayerENet.new()
-		peer.create_client(SERVER_IP, SERVER_PORT)
-		get_tree().set_network_peer(peer)
+	var peer = NetworkedMultiplayerENet.new()
+	peer.create_client(SERVER_IP, SERVER_PORT)
+	get_tree().set_network_peer(peer)
 
 func player_connected(id):
 	player_info.id = id
@@ -42,16 +38,12 @@ func player_connected(id):
 	else: 
 		amount_connected += 2
 	
-	if x == 0:
-		player_info.role = "Heres"
-	else:
-		player_info.role = "Yetzira"
-	
 func player_disconnected(id):
-    player_info.erase(id)
+	player_info.erase(id)
+	get_tree().change_scene("res://Main_Menu.tscn")
 	
-func connected_ok():	
-	rpc("register_player", get_tree().get_network_unique_id(), player_info);
+func connected_ok():
+	rpc("register_player", get_tree().get_network_unique_id(), player_info)
 	
 func connected_fail():
 	print("error connecting")
@@ -61,7 +53,6 @@ func server_disconnected():
 	
 remote func register_player(id, info):
 	player_info[id] = info
-	# If I'm the server, let the new guy know about existing players
 	if get_tree().is_network_server():
 	    rpc_id(id, "register_player", 1, player_info)
 	    for peer_id in player_info:
