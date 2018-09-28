@@ -14,7 +14,6 @@ func _ready():
 		
 	if Network.is_host:
 		if Network.host_info.role == "Yetzira":
-			print("hi")
 			add_child(YetziraUI.instance())
 		else:
 			add_child(HeresUI.instance())
@@ -28,12 +27,3 @@ func _ready():
 		$Role_display.set_text("You Are: " + Network.host_info.role)
 	else:
 		$Role_display.set_text("You Are: " + Network.player_info.role)
-		
-		
-func can_drop_data(pos, data):
-	print("hi")
-	return true
-	
-func drop_data(pos, data):
-	self.position = pos
-
