@@ -49,6 +49,9 @@ func _on_End_Turn_pressed():
 
 sync func end_turn():
 	if current_turn == "Yetzira":
+		Yetzira.CP = 10
 		current_turn = "Heres"
 	else:
+		Heres.DP = 10
 		current_turn = "Yetzira"
+		

@@ -1,15 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Yetzira.gd" type="Script" id=1]
-[ext_resource path="res://ItemList.gd" type="Script" id=2]
-[ext_resource path="res://jsl-ancient/JANCIENT.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://jsl-ancient/JANCIENT.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://No_Points.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 20
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 3 )
+font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=2]
@@ -17,7 +17,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 20
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 3 )
+font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=3]
@@ -25,16 +25,19 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 20
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 3 )
+font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Yetzira" type="CanvasLayer" index="0"]
+[sub_resource type="DynamicFont" id=4]
 
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+size = 20
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="Yetzira" type="Node"]
+
 script = ExtResource( 1 )
 
 [node name="Stage1_Skills" type="Node" parent="." index="0"]
@@ -63,7 +66,6 @@ select_mode = 0
 allow_reselect = false
 icon_mode = 1
 fixed_icon_size = Vector2( 0, 0 )
-script = ExtResource( 2 )
 _sections_unfolded = [ "Rect", "custom_constants" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Stage1_Skills/ItemList" index="1"]
@@ -187,7 +189,6 @@ select_mode = 0
 allow_reselect = false
 icon_mode = 1
 fixed_icon_size = Vector2( 0, 0 )
-script = ExtResource( 2 )
 _sections_unfolded = [ "Rect", "custom_constants" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Stage2_Skills/ItemList" index="1"]
@@ -310,7 +311,6 @@ select_mode = 0
 allow_reselect = false
 icon_mode = 1
 fixed_icon_size = Vector2( 0, 0 )
-script = ExtResource( 2 )
 _sections_unfolded = [ "Rect", "custom_constants" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Stage3_Skills/ItemList" index="1"]
@@ -434,7 +434,6 @@ select_mode = 0
 allow_reselect = false
 icon_mode = 1
 fixed_icon_size = Vector2( 0, 0 )
-script = ExtResource( 2 )
 _sections_unfolded = [ "Rect", "custom_constants" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Stage4_Skills/ItemList" index="1"]
@@ -534,8 +533,11 @@ _sections_unfolded = [ "Rect", "custom_fonts" ]
 
 [node name="Stage5_Skills" type="Node" parent="." index="4"]
 
+editor/display_folded = true
+
 [node name="ItemList" type="ItemList" parent="Stage5_Skills" index="0"]
 
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -555,7 +557,6 @@ select_mode = 0
 allow_reselect = false
 icon_mode = 1
 fixed_icon_size = Vector2( 0, 0 )
-script = ExtResource( 2 )
 _sections_unfolded = [ "Rect", "custom_constants" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Stage5_Skills/ItemList" index="1"]
@@ -652,5 +653,69 @@ text = "Create Galaxy"
 flat = false
 align = 1
 _sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="No_Points" type="Label" parent="." index="5"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 3.0
+margin_top = 220.0
+margin_right = 217.0
+margin_bottom = 241.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+text = "No Creation Points Remaining"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 3 )
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="no_points_timer" type="Timer" parent="No_Points" index="0"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = false
+
+[connection signal="pressed" from="Stage1_Skills/ItemList/VBoxContainer/Atom" to="." method="_on_Atom_pressed"]
+
+[connection signal="pressed" from="Stage1_Skills/ItemList/VBoxContainer/Molecule" to="." method="_on_Molecule_pressed"]
+
+[connection signal="pressed" from="Stage1_Skills/ItemList/VBoxContainer/Compound" to="." method="_on_Compound_pressed"]
+
+[connection signal="pressed" from="Stage2_Skills/ItemList/VBoxContainer/Cell" to="." method="_on_Cell_pressed"]
+
+[connection signal="pressed" from="Stage2_Skills/ItemList/VBoxContainer/Tissue" to="." method="_on_Tissue_pressed"]
+
+[connection signal="pressed" from="Stage2_Skills/ItemList/VBoxContainer/Organ" to="." method="_on_Organ_pressed"]
+
+[connection signal="pressed" from="Stage3_Skills/ItemList/VBoxContainer/Person" to="." method="_on_Person_pressed"]
+
+[connection signal="pressed" from="Stage3_Skills/ItemList/VBoxContainer/Crowd" to="." method="_on_Crowd_pressed"]
+
+[connection signal="pressed" from="Stage3_Skills/ItemList/VBoxContainer/Building" to="." method="_on_Building_pressed"]
+
+[connection signal="pressed" from="Stage4_Skills/ItemList/VBoxContainer/Village" to="." method="_on_Village_pressed"]
+
+[connection signal="pressed" from="Stage4_Skills/ItemList/VBoxContainer/City" to="." method="_on_City_pressed"]
+
+[connection signal="pressed" from="Stage4_Skills/ItemList/VBoxContainer/Country" to="." method="_on_Country_pressed"]
+
+[connection signal="pressed" from="Stage5_Skills/ItemList/VBoxContainer/Planet" to="." method="_on_Planet_pressed"]
+
+[connection signal="pressed" from="Stage5_Skills/ItemList/VBoxContainer/System" to="." method="_on_System_pressed"]
+
+[connection signal="pressed" from="Stage5_Skills/ItemList/VBoxContainer/Galaxy" to="." method="_on_Galaxy_pressed"]
+
+[connection signal="timeout" from="No_Points/no_points_timer" to="No_Points" method="_on_no_points_timer_timeout"]
 
 
