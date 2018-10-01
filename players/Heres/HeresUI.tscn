@@ -1,21 +1,21 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://YetziraUI.gd" type="Script" id=1]
+[ext_resource path="res://players/Heres/HeresUI.gd" type="Script" id=1]
 [ext_resource path="res://jsl-ancient/JANCIENT.TTF" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 20
 use_mipmaps = false
-use_filter = true
+use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=2]
 
 size = 20
-use_mipmaps = true
-use_filter = true
+use_mipmaps = false
+use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
@@ -35,7 +35,31 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="YetziraUI" type="Control"]
+[sub_resource type="DynamicFont" id=5]
+
+size = 20
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=6]
+
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=7]
+
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="HeresUI" type="Control"]
 
 visible = false
 anchor_left = 0.0
@@ -68,12 +92,12 @@ size_flags_vertical = 1
 [node name="ItemList" type="ItemList" parent="Stage1_Skills" index="0"]
 
 editor/display_folded = true
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 150.0
+margin_left = 874.0
+margin_right = 1024.0
 margin_bottom = 200.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
@@ -87,10 +111,11 @@ select_mode = 0
 allow_reselect = false
 icon_mode = 1
 fixed_icon_size = Vector2( 0, 0 )
-_sections_unfolded = [ "Rect", "custom_constants" ]
+_sections_unfolded = [ "Margin", "Rect", "custom_constants" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Stage1_Skills/ItemList" index="1"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -105,7 +130,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_constants/separation = 50
 alignment = 0
-_sections_unfolded = [ "Margin", "Rect", "custom_constants" ]
+_sections_unfolded = [ "Rect", "custom_constants" ]
 
 [node name="Atom" type="Button" parent="Stage1_Skills/ItemList/VBoxContainer" index="0"]
 
@@ -113,7 +138,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 150.0
+margin_right = 157.0
 margin_bottom = 27.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -127,10 +152,10 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Create Atom"
+text = "Atom Spliter"
 flat = false
 align = 1
-_sections_unfolded = [ "Margin", "Rect", "custom_fonts" ]
+_sections_unfolded = [ "Rect", "custom_fonts" ]
 
 [node name="Molecule" type="Button" parent="Stage1_Skills/ItemList/VBoxContainer" index="1"]
 
@@ -139,7 +164,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 77.0
-margin_right = 150.0
+margin_right = 157.0
 margin_bottom = 104.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -153,7 +178,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Create Molecule"
+text = "Molecule Tearer"
 flat = false
 align = 1
 _sections_unfolded = [ "Rect", "custom_fonts" ]
@@ -165,7 +190,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 154.0
-margin_right = 150.0
+margin_right = 157.0
 margin_bottom = 181.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -179,7 +204,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Create Compound"
+text = "Compound Destoyer"
 flat = false
 align = 1
 _sections_unfolded = [ "Rect", "custom_fonts" ]
@@ -202,12 +227,12 @@ size_flags_vertical = 1
 [node name="ItemList" type="ItemList" parent="Stage2_Skills" index="0"]
 
 editor/display_folded = true
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 150.0
+margin_left = 874.0
+margin_right = 1024.0
 margin_bottom = 200.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
@@ -221,10 +246,11 @@ select_mode = 0
 allow_reselect = false
 icon_mode = 1
 fixed_icon_size = Vector2( 0, 0 )
-_sections_unfolded = [ "Rect", "custom_constants" ]
+_sections_unfolded = [ "Rect" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Stage2_Skills/ItemList" index="1"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -239,7 +265,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_constants/separation = 50
 alignment = 0
-_sections_unfolded = [ "Margin", "Rect", "custom_constants" ]
+_sections_unfolded = [ "Rect", "custom_constants" ]
 
 [node name="Cell" type="Button" parent="Stage2_Skills/ItemList/VBoxContainer" index="0"]
 
@@ -256,15 +282,15 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 4 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Create Cell"
+text = "Cell Breaker"
 flat = false
 align = 1
-_sections_unfolded = [ "Margin", "Rect", "custom_fonts" ]
+_sections_unfolded = [ "Rect", "custom_fonts" ]
 
 [node name="Tissue" type="Button" parent="Stage2_Skills/ItemList/VBoxContainer" index="1"]
 
@@ -282,12 +308,12 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Create Tissue"
+text = "Tissue Tearer"
 flat = false
 align = 1
 _sections_unfolded = [ "Rect", "custom_fonts" ]
@@ -308,12 +334,12 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 6 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Create Organ"
+text = "Organ Annihilator "
 flat = false
 align = 1
 _sections_unfolded = [ "Rect", "custom_fonts" ]
@@ -340,7 +366,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 150.0
+margin_left = 874.0
+margin_right = 1024.0
 margin_bottom = 200.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
@@ -354,7 +381,7 @@ select_mode = 0
 allow_reselect = false
 icon_mode = 1
 fixed_icon_size = Vector2( 0, 0 )
-_sections_unfolded = [ "Rect", "custom_constants" ]
+_sections_unfolded = [ "Rect" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Stage3_Skills/ItemList" index="1"]
 
@@ -372,15 +399,15 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_constants/separation = 50
 alignment = 0
-_sections_unfolded = [ "Margin", "Rect", "custom_constants" ]
+_sections_unfolded = [ "Rect", "custom_constants" ]
 
-[node name="Person" type="Button" parent="Stage3_Skills/ItemList/VBoxContainer" index="0"]
+[node name="People" type="Button" parent="Stage3_Skills/ItemList/VBoxContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 150.0
+margin_right = 153.0
 margin_bottom = 27.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -389,15 +416,15 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 4 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Create Person"
+text = "People Decimator"
 flat = false
 align = 1
-_sections_unfolded = [ "Margin", "Rect", "custom_fonts" ]
+_sections_unfolded = [ "Rect", "custom_fonts" ]
 
 [node name="Crowd" type="Button" parent="Stage3_Skills/ItemList/VBoxContainer" index="1"]
 
@@ -406,7 +433,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 77.0
-margin_right = 150.0
+margin_right = 153.0
 margin_bottom = 104.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -415,12 +442,12 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Create Crowd"
+text = "Crowd Seperator"
 flat = false
 align = 1
 _sections_unfolded = [ "Rect", "custom_fonts" ]
@@ -432,7 +459,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 154.0
-margin_right = 150.0
+margin_right = 153.0
 margin_bottom = 181.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -441,12 +468,12 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 6 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Create Building"
+text = "Building Demolisher"
 flat = false
 align = 1
 _sections_unfolded = [ "Rect", "custom_fonts" ]
@@ -469,12 +496,12 @@ size_flags_vertical = 1
 [node name="ItemList" type="ItemList" parent="Stage4_Skills" index="0"]
 
 editor/display_folded = true
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 150.0
+margin_left = 874.0
+margin_right = 1024.0
 margin_bottom = 200.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
@@ -488,7 +515,7 @@ select_mode = 0
 allow_reselect = false
 icon_mode = 1
 fixed_icon_size = Vector2( 0, 0 )
-_sections_unfolded = [ "Rect", "custom_constants" ]
+_sections_unfolded = [ "Rect" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Stage4_Skills/ItemList" index="1"]
 
@@ -506,7 +533,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_constants/separation = 50
 alignment = 0
-_sections_unfolded = [ "Margin", "Rect", "custom_constants" ]
+_sections_unfolded = [ "Rect", "custom_constants" ]
 
 [node name="Village" type="Button" parent="Stage4_Skills/ItemList/VBoxContainer" index="0"]
 
@@ -514,7 +541,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 150.0
+margin_right = 153.0
 margin_bottom = 27.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -523,15 +550,15 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 4 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Create Village"
+text = "Village Vaporizer"
 flat = false
 align = 1
-_sections_unfolded = [ "Margin", "Rect", "custom_fonts" ]
+_sections_unfolded = [ "Rect", "custom_fonts" ]
 
 [node name="City" type="Button" parent="Stage4_Skills/ItemList/VBoxContainer" index="1"]
 
@@ -540,7 +567,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 77.0
-margin_right = 150.0
+margin_right = 153.0
 margin_bottom = 104.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -549,12 +576,12 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Create City"
+text = "City Demolator"
 flat = false
 align = 1
 _sections_unfolded = [ "Rect", "custom_fonts" ]
@@ -566,7 +593,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 154.0
-margin_right = 150.0
+margin_right = 153.0
 margin_bottom = 181.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -575,12 +602,12 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 6 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Create Country"
+text = "Country Swallower"
 flat = false
 align = 1
 _sections_unfolded = [ "Rect", "custom_fonts" ]
@@ -603,12 +630,12 @@ size_flags_vertical = 1
 [node name="ItemList" type="ItemList" parent="Stage5_Skills" index="0"]
 
 editor/display_folded = true
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 150.0
+margin_left = 874.0
+margin_right = 1024.0
 margin_bottom = 200.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
@@ -622,7 +649,7 @@ select_mode = 0
 allow_reselect = false
 icon_mode = 1
 fixed_icon_size = Vector2( 0, 0 )
-_sections_unfolded = [ "Rect", "custom_constants" ]
+_sections_unfolded = [ "Rect" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Stage5_Skills/ItemList" index="1"]
 
@@ -640,7 +667,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_constants/separation = 50
 alignment = 0
-_sections_unfolded = [ "Margin", "Rect", "custom_constants" ]
+_sections_unfolded = [ "Rect", "custom_constants" ]
 
 [node name="Planet" type="Button" parent="Stage5_Skills/ItemList/VBoxContainer" index="0"]
 
@@ -657,15 +684,15 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 4 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Create Planet"
+text = "Planet Vaporizer"
 flat = false
 align = 1
-_sections_unfolded = [ "Margin", "Rect", "custom_fonts" ]
+_sections_unfolded = [ "Rect", "custom_fonts" ]
 
 [node name="System" type="Button" parent="Stage5_Skills/ItemList/VBoxContainer" index="1"]
 
@@ -683,12 +710,12 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Create System"
+text = "System Tearer"
 flat = false
 align = 1
 _sections_unfolded = [ "Rect", "custom_fonts" ]
@@ -709,41 +736,41 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 6 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Create Galaxy"
+text = "Galaxy Swallower"
 flat = false
 align = 1
 _sections_unfolded = [ "Rect", "custom_fonts" ]
 
-[node name="No_Points" type="Label" parent="." index="5"]
+[node name="No_DP" type="Label" parent="." index="5"]
 
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 3.0
-margin_top = 220.0
-margin_right = 217.0
-margin_bottom = 241.0
+margin_left = 1.0
+margin_top = 184.0
+margin_right = 237.0
+margin_bottom = 205.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 4 )
-text = "No Creation Points Remaining"
+custom_fonts/font = SubResource( 7 )
+text = "No Destruction Points Remaining"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_fonts" ]
 
-[node name="no_points_timer" type="Timer" parent="No_Points" index="0"]
+[node name="no_dp_timer" type="Timer" parent="No_DP" index="0"]
 
 process_mode = 1
 wait_time = 0.5
@@ -762,7 +789,7 @@ autostart = false
 
 [connection signal="pressed" from="Stage2_Skills/ItemList/VBoxContainer/Organ" to="." method="_on_Organ_pressed"]
 
-[connection signal="pressed" from="Stage3_Skills/ItemList/VBoxContainer/Person" to="." method="_on_Person_pressed"]
+[connection signal="pressed" from="Stage3_Skills/ItemList/VBoxContainer/People" to="." method="_on_People_pressed"]
 
 [connection signal="pressed" from="Stage3_Skills/ItemList/VBoxContainer/Crowd" to="." method="_on_Crowd_pressed"]
 
@@ -779,5 +806,7 @@ autostart = false
 [connection signal="pressed" from="Stage5_Skills/ItemList/VBoxContainer/System" to="." method="_on_System_pressed"]
 
 [connection signal="pressed" from="Stage5_Skills/ItemList/VBoxContainer/Galaxy" to="." method="_on_Galaxy_pressed"]
+
+[connection signal="timeout" from="No_DP/no_dp_timer" to="." method="_on_no_dp_timer_timeout"]
 
 

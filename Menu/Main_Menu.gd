@@ -36,4 +36,4 @@ func _on_Error_Close_pressed():
 	$no_server_err.hide()
 
 func load_game():
-	get_tree().change_scene("res://Game.tscn")
+	get_tree().change_scene("res://game/Game.tscn")

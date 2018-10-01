@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Game.gd" type="Script" id=1]
+[ext_resource path="res://game/Game.gd" type="Script" id=1]
 [ext_resource path="res://jsl-ancient/JANCIENT.TTF" type="DynamicFontData" id=2]
-[ext_resource path="res://HeresUI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://YetziraUI.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Yetzira_won_stg.gd" type="Script" id=5]
-[ext_resource path="res://Heres_won_stg.gd" type="Script" id=6]
+[ext_resource path="res://players/Heres/HeresUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://players/Yetzira/YetziraUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://players/Yetzira/Yetzira_won_stg.gd" type="Script" id=5]
+[ext_resource path="res://players/Heres/Heres_won_stg.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -256,9 +256,9 @@ wait_time = 1.0
 one_shot = true
 autostart = false
 
-[connection signal="send_current_and_last_stage" from="." to="HeresUI" method="_on_Game_send_current_and_last_stage"]
-
 [connection signal="send_current_and_last_stage" from="." to="YetziraUI" method="_on_Game_send_current_and_last_stage"]
+
+[connection signal="send_current_and_last_stage" from="." to="HeresUI" method="_on_Game_send_current_and_last_stage"]
 
 [connection signal="start_H_timer" from="." to="Heres_won_stg" method="start_timer"]
 

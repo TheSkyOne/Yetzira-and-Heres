@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Main_Menu.gd" type="Script" id=1]
+[ext_resource path="res://Menu/Main_Menu.gd" type="Script" id=1]
 [ext_resource path="res://jsl-ancient/JANCIENT.TTF" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]

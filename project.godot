@@ -11,12 +11,12 @@ config_version=3
 [application]
 
 config/name="Yetzira and Heres"
-run/main_scene="res://Main_Menu.tscn"
+run/main_scene="res://Menu/Main_Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Network="*res://Network.gd"
+Network="*res://network/Network.gd"
 
 [display]
 
