@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/stage3_tile.png-6ee930c6653f59f014790bd5f8f27600.stex"
+path="res://.import/tiles.png-5543c94a7422728438498b2cd4eb36c8.stex"
 
 [deps]
 
-source_file="res://assets/tiles/stage3_tile.png"
-dest_files=[ "res://.import/stage3_tile.png-6ee930c6653f59f014790bd5f8f27600.stex" ]
+source_file="res://assets/tiles/tiles.png"
+dest_files=[ "res://.import/tiles.png-5543c94a7422728438498b2cd4eb36c8.stex" ]
 
 [params]
 
@@ -25,5 +25,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0
