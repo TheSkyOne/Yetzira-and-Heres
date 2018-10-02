@@ -10,6 +10,7 @@ signal start_H_timer()
 
 func _ready():
 	current_stage = 3
+	$Stage3/TileMap.show()
 	
 	if x == 0:
 		Network.host_info.role = "Yetzira"
@@ -86,9 +87,14 @@ sync func h_won_curr_stg():
 	current_stage -= 1
 	$Heres_won_stg.show()
 	emit_signal("start_H_timer")
+	rpc("show_curr_stg")
 	
 sync func y_won_curr_stg():
 	current_stage += 1
 	$Yetzira_won_stg.show()
 	emit_signal("start_Y_timer")
+	rpc("show_curr_stg")
 
+sync func show_curr_stg():
+	get_node("Stage" + str(last_stage)).get_node("TileMap").hide()
+	get_node("Stage" + str(current_stage)).get_node("TileMap").show()

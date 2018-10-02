@@ -188,6 +188,7 @@ editor/display_folded = true
 
 [node name="TileMap" type="TileMap" parent="Stage5" index="0"]
 
+visible = false
 position = Vector2( 0, 50 )
 mode = 1
 tile_set = ExtResource( 2 )
