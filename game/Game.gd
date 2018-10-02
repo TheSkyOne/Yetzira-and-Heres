@@ -1,10 +1,5 @@
 extends Node
 
-const Stage1 = preload("res://game/stages/Stage1.tscn")
-const Stage2 = preload("res://game/stages/Stage2.tscn")
-const Stage3 = preload("res://game/stages/Stage3.tscn")
-const Stage4 = preload("res://game/stages/Stage4.tscn")
-const Stage5 = preload("res://game/stages/Stage5.tscn")
 onready var x = randi()%1
 onready var current_stage = 0
 onready var last_stage = 0
@@ -14,7 +9,6 @@ signal start_Y_timer()
 signal start_H_timer()
 
 func _ready():
-	add_child(Stage3.instance())
 	current_stage = 3
 	
 	if x == 0:
