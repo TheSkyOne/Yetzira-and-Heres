@@ -10,29 +10,18 @@ signal start_H_timer()
 
 func _ready():
 	current_stage = 3
-	$Stage3/TileMap.show()
 	
-	if x == 0:
-		Network.host_info.role = "Yetzira"
-		Network.player_info.role = "Heres"
-		current_turn = "Yetzira"
-	else:
-		Network.host_info.role = "Heres"
-		Network.player_info.role = "Yetzira"	
-		current_turn = "Heres"
-		
-		
 	if Network.is_host:
-		if Network.host_info.role == "Yetzira":
-			$YetziraUI.show()
-		else:
-			$HeresUI.show()
-	else:
-		if Network.player_info.role == "Yetzira":
-			$YetziraUI.show()
-		else:
-			$HeresUI.show()
-	
+		$HostorPlayer.set_text("Host")
+	elif Network.is_host == false:
+		$HostorPlayer.set_text("Player")
+
+	Network.host_info.role = "Yetzira"
+	Network.player_info.role = "Heres"
+	current_turn = Network.host_info.role
+
+		
+	$Turn.set_text(current_turn + " now playing")
 	
 	if Network.is_host:
 		$Role_display.set_text("You Are: " + Network.host_info.role)
@@ -40,10 +29,24 @@ func _ready():
 		$Role_display.set_text("You Are: " + Network.player_info.role)
 
 func _process(delta):
-	$Turn.set_text(current_turn + " now playing")
-	
+	rpc("set_end_turn_disabled")
 	rpc("won_game")
 	rpc("who_won_stg")
+
+sync func set_end_turn_disabled():
+	match current_turn:
+			"Yetzira":
+				if Network.is_host:
+					$End_Turn.set_disabled(Network.host_info.role == "Heres")
+				else:
+					$End_Turn.set_disabled(Network.player_info.role == "Heres")
+					
+			"Heres":
+				if Network.is_host:
+					$End_Turn.set_disabled(Network.host_info.role == "Yetzira")
+				else:
+					$End_Turn.set_disabled(Network.player_info.role == "Yetzira")
+	
 
 sync func who_won_stg():
 	if $HeresUI.points >= 15:
@@ -67,6 +70,8 @@ sync func end_turn():
 		current_turn = "Yetzira"
 		$HeresUI.DP = 10
 		
+	$Turn.set_text(current_turn + " now playing")
+	
 sync func send_curr_and_lst_stg():
 	emit_signal("send_current_and_last_stage", current_stage, last_stage)
 		
@@ -87,14 +92,8 @@ sync func h_won_curr_stg():
 	current_stage -= 1
 	$Heres_won_stg.show()
 	emit_signal("start_H_timer")
-	rpc("show_curr_stg")
 	
 sync func y_won_curr_stg():
 	current_stage += 1
 	$Yetzira_won_stg.show()
 	emit_signal("start_Y_timer")
-	rpc("show_curr_stg")
-
-sync func show_curr_stg():
-	get_node("Stage" + str(last_stage)).get_node("TileMap").hide()
-	get_node("Stage" + str(current_stage)).get_node("TileMap").show()

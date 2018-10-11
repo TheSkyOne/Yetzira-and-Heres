@@ -75,7 +75,7 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Main_Menu" type="Node"]
+[node name="Main_Menu" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -98,7 +98,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="menu_screen" type="Control" parent="." index="1"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -135,7 +134,7 @@ percent_visible = 1.0
 meta_underlined = true
 tab_size = 0
 text = "Yetzira and Heres"
-scroll_active = true
+scroll_active = false
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false

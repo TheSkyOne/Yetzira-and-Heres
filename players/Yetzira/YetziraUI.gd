@@ -16,7 +16,7 @@ func _process(delta):
 		flag = true
 
 func get_points():
-	if Input.is_action_just_pressed("right_mouse"):
+	if Input.is_action_just_pressed("ctrl"):
 		points += 5
 	
 func _on_Game_send_current_and_last_stage(curr_stg, lst_stg):

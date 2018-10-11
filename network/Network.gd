@@ -6,7 +6,7 @@ var SERVER_IP = ""
 var player_info = {id = "", role = ""}
 var host_info = {id = "", role = ""}
 var amount_connected = 0
-onready var is_host = false
+var is_host = false
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "player_connected")
@@ -14,6 +14,7 @@ func _ready():
 	get_tree().connect("connected_to_server", self, "connected_ok")
 	get_tree().connect("connection_failed", self, "connected_fail")
 	get_tree().connect("server_disconnected", self, "server_disconnected")
+	
 
 func create_server():
 	var host = NetworkedMultiplayerENet.new()
@@ -22,8 +23,6 @@ func create_server():
 	amount_connected += 1
 	host_info.id = host.get_unique_id()
 	is_host = true
-	
-
 
 func connect_to_server():
 	var peer = NetworkedMultiplayerENet.new()
