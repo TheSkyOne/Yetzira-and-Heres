@@ -13,47 +13,42 @@ func _ready():
 	x = randi()%2
 	current_stage = 3
 	
+	match x:
+		0:
+			Network.host_info.role = "Yetzira"
+			Network.player_info.role = "Heres"
+			current_turn = Network.player_info.role
+		1:
+			Network.host_info.role = "Heres"
+			Network.player_info.role = "Yetzira"
+			current_turn = Network.player_info.role
+
 	if Network.is_host:
 		$HostorPlayer.set_text("Host")
-	elif Network.is_host == false:
-		$HostorPlayer.set_text("Player")
-
-	if x == 0:
-		Network.host_info.role = "Yetzira"
-		Network.player_info.role = "Heres"
-		current_turn = Network.player_info.role
-		
-	else:
-		Network.host_info.role = "Heres"
-		Network.player_info.role = "Yetzira"
-		current_turn = Network.player_info.role
-	
-	if Network.is_host:
 		$Role_display.set_text("You Are: " + Network.host_info.role)
 	else:
+		$HostorPlayer.set_text("Player")
 		$Role_display.set_text("You Are: " + Network.player_info.role)
-		
+
+	rpc("set_end_turn_disabled")
 	$Turn.set_text(current_turn + " now playing")
 
 func _process(delta):
-	set_end_turn_disabled()
 	rpc("won_game")
 	rpc("who_won_stg")
 
-func set_end_turn_disabled():
+sync func set_end_turn_disabled():
 	match current_turn:
-			"Yetzira":
-				if Network.is_host:
-					$End_Turn.set_disabled(Network.host_info.role == "Heres")
-				else:
-					$End_Turn.set_disabled(Network.player_info.role == "Heres")
-
-			"Heres":
-				if Network.is_host:
-					$End_Turn.set_disabled(Network.host_info.role == "Yetzira")
-				else:
-					$End_Turn.set_disabled(Network.player_info.role == "Yetzira")
-
+		"Yetzira":
+			if Network.is_host:
+				$End_Turn.set_disabled(Network.host_info.role == "Heres")
+			else:
+				$End_Turn.set_disabled(Network.player_info.role == "Heres")
+		"Heres":
+			if Network.is_host:
+				$End_Turn.set_disabled(Network.host_info.role == "Yetzira")
+			else:
+				$End_Turn.set_disabled(Network.player_info.role == "Yetzira")
 
 sync func who_won_stg():
 	if $HeresUI.points >= 15:
@@ -66,16 +61,18 @@ sync func who_won_stg():
 		$YetziraUI.points = 0
 		rpc("send_curr_and_lst_stg")
 
-func _on_End_Turn_pressed():
+func _on_End_Turn_pressed(): 
 	rpc("end_turn")
-
+	rpc("set_end_turn_disabled")
+	
 sync func end_turn():
-	if current_turn == "Yetzira":
-		current_turn = "Heres"
-		$YetziraUI.CP = 10
-	else:
-		current_turn = "Yetzira"
-		$HeresUI.DP = 10
+	match current_turn:
+		"Yetzira":
+			current_turn = "Heres"
+			$YetziraUI.CP = 10
+		"Heres":
+			current_turn = "Yetzira"
+			$HeresUI.DP = 10
 		
 	$Turn.set_text(current_turn + " now playing")
 	
