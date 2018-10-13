@@ -1,14 +1,16 @@
 extends Node
 
-onready var x = randi()%1
 onready var current_stage = 0
 onready var last_stage = 0
 var current_turn = ""
+var x
 signal send_current_and_last_stage()
 signal start_Y_timer()
 signal start_H_timer()
 
 func _ready():
+	randomize()
+	x = randi()%2
 	current_stage = 3
 	
 	if Network.is_host:
@@ -16,37 +18,42 @@ func _ready():
 	elif Network.is_host == false:
 		$HostorPlayer.set_text("Player")
 
-	Network.host_info.role = "Yetzira"
-	Network.player_info.role = "Heres"
-	current_turn = Network.host_info.role
-
+	if x == 0:
+		Network.host_info.role = "Yetzira"
+		Network.player_info.role = "Heres"
+		current_turn = Network.player_info.role
 		
-	$Turn.set_text(current_turn + " now playing")
+	else:
+		Network.host_info.role = "Heres"
+		Network.player_info.role = "Yetzira"
+		current_turn = Network.player_info.role
 	
 	if Network.is_host:
 		$Role_display.set_text("You Are: " + Network.host_info.role)
 	else:
 		$Role_display.set_text("You Are: " + Network.player_info.role)
+		
+	$Turn.set_text(current_turn + " now playing")
 
 func _process(delta):
-	rpc("set_end_turn_disabled")
+	set_end_turn_disabled()
 	rpc("won_game")
 	rpc("who_won_stg")
 
-sync func set_end_turn_disabled():
+func set_end_turn_disabled():
 	match current_turn:
 			"Yetzira":
 				if Network.is_host:
 					$End_Turn.set_disabled(Network.host_info.role == "Heres")
 				else:
 					$End_Turn.set_disabled(Network.player_info.role == "Heres")
-					
+
 			"Heres":
 				if Network.is_host:
 					$End_Turn.set_disabled(Network.host_info.role == "Yetzira")
 				else:
 					$End_Turn.set_disabled(Network.player_info.role == "Yetzira")
-	
+
 
 sync func who_won_stg():
 	if $HeresUI.points >= 15:
